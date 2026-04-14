@@ -1,0 +1,14 @@
+/* Korean, Vietnamese, Thai fonts */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&family=Noto+Sans:wght@400;500;600;700&family=Noto+Sans+Thai:wght@400;500;600;700&display=swap');
+
+/* Distinctive display font */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap');
+
+:root {
+  --font-body: 'Noto Sans KR', 'Noto Sans', -apple-system, sans-serif;
+  --font-display: 'Outfit', 'Noto Sans KR', sans-serif;
+}
+
+body {
+  font-family: var(--font-body);
+}

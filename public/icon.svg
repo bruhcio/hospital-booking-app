@@ -1,0 +1,23 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="512" height="512" rx="120" fill="#4a7c59"/>
+  
+  <!-- Bone Icon -->
+  <g transform="translate(128, 128)">
+    <!-- Left circle -->
+    <circle cx="40" cy="128" r="40" fill="white"/>
+    <!-- Right circle -->
+    <circle cx="216" cy="128" r="40" fill="white"/>
+    <!-- Center bar -->
+    <rect x="60" y="110" width="136" height="36" rx="18" fill="white"/>
+    <!-- Top connectors -->
+    <circle cx="40" cy="108" r="20" fill="white"/>
+    <circle cx="40" cy="148" r="20" fill="white"/>
+    <circle cx="216" cy="108" r="20" fill="white"/>
+    <circle cx="216" cy="148" r="20" fill="white"/>
+  </g>
+  
+  <!-- Plus sign (medical) -->
+  <rect x="370" y="100" width="40" height="120" rx="10" fill="#d97757"/>
+  <rect x="330" y="140" width="120" height="40" rx="10" fill="#d97757"/>
+</svg>

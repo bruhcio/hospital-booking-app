@@ -1,0 +1,231 @@
+import { createContext, useContext, useState, ReactNode } from 'react';
+
+type Language = 'ko' | 'vi' | 'th';
+
+interface Translations {
+  ko: { [key: string]: string };
+  vi: { [key: string]: string };
+  th: { [key: string]: string };
+}
+
+const translations: Translations = {
+  ko: {
+    appTitle: '정형외과 예약',
+    selectLanguage: '언어 선택',
+    korean: '한국어',
+    vietnamese: '베트남어',
+    thai: '태국어',
+    bookAppointment: '진료 예약하기',
+    selectDate: '날짜 선택',
+    selectTime: '시간 선택',
+    selectDoctor: '의사 선택',
+    patientInfo: '환자 정보',
+    name: '이름',
+    phone: '전화번호',
+    symptoms: '증상',
+    confirmBooking: '예약 확인',
+    back: '뒤로',
+    next: '다음',
+    submit: '제출',
+    welcomeMessage: '환영합니다',
+    welcomeSubtitle: '정형외과 전문 진료 예약 서비스',
+    selectService: '진료 선택',
+    generalOrthopedics: '일반 정형외과',
+    spineSpecialist: '척추 전문',
+    jointsSpecialist: '관절 전문',
+    sportsInjury: '스포츠 손상',
+    workInjury: '산업재해',
+    morning: '오전',
+    afternoon: '오후',
+    evening: '저녁',
+    availableDoctors: '진료 가능한 의사',
+    bookingConfirmed: '예약이 완료되었습니다',
+    bookingDetails: '예약 상세',
+    home: '홈',
+    booking: '예약',
+    waiting: '웨이팅',
+    myInfo: '내 정보',
+    currentWaiting: '현재 대기',
+    peopleWaiting: '명 대기중',
+    estimatedTime: '예상 대기시간',
+    minutes: '분',
+    joinWaitlist: '대기 등록',
+    waitingNumber: '대기 번호',
+    yourTurn: '곧 차례입니다',
+    cancelWaiting: '대기 취소',
+    visitHistory: '방문 기록',
+    prescriptionHistory: '처방 내역',
+    noHistory: '방문 기록이 없습니다',
+    date: '날짜',
+    diagnosis: '진단',
+    prescription: '처방',
+    doctor: '담당의',
+    quickActions: '빠른 메뉴',
+    upcomingAppointments: '예정된 예약',
+    noAppointments: '예정된 예약이 없습니다',
+    todayWaiting: '오늘 대기 현황',
+    emergency: '응급',
+    myAppointments: '내 예약',
+    profile: '프로필',
+    language: '언어',
+    settings: '설정',
+    logout: '로그아웃',
+    viewAll: '전체보기',
+  },
+  vi: {
+    appTitle: 'Đặt lịch Chỉnh hình',
+    selectLanguage: 'Chọn ngôn ngữ',
+    korean: 'Tiếng Hàn',
+    vietnamese: 'Tiếng Việt',
+    thai: 'Tiếng Thái',
+    bookAppointment: 'Đặt lịch khám',
+    selectDate: 'Chọn ngày',
+    selectTime: 'Chọn giờ',
+    selectDoctor: 'Chọn bác sĩ',
+    patientInfo: 'Thông tin bệnh nhân',
+    name: 'Họ và tên',
+    phone: 'Số điện thoại',
+    symptoms: 'Triệu chứng',
+    confirmBooking: 'Xác nhận đặt lịch',
+    back: 'Quay lại',
+    next: 'Tiếp theo',
+    submit: 'Gửi',
+    welcomeMessage: 'Chào mừng',
+    welcomeSubtitle: 'Dịch vụ đặt lịch khám chuyên khoa chỉnh hình',
+    selectService: 'Chọn dịch vụ',
+    generalOrthopedics: 'Chỉnh hình tổng quát',
+    spineSpecialist: 'Chuyên khoa cột sống',
+    jointsSpecialist: 'Chuyên khoa khớp',
+    sportsInjury: 'Chấn thương thể thao',
+    workInjury: 'Tai nạn lao động',
+    morning: 'Buổi sáng',
+    afternoon: 'Buổi chiều',
+    evening: 'Buổi tối',
+    availableDoctors: 'Bác sĩ có lịch',
+    bookingConfirmed: 'Đặt lịch thành công',
+    bookingDetails: 'Chi tiết đặt lịch',
+    home: 'Trang chủ',
+    booking: 'Đặt lịch',
+    waiting: 'Chờ đợi',
+    myInfo: 'Thông tin',
+    currentWaiting: 'Hiện đang chờ',
+    peopleWaiting: 'người đang chờ',
+    estimatedTime: 'Thời gian ước tính',
+    minutes: 'phút',
+    joinWaitlist: 'Đăng ký chờ',
+    waitingNumber: 'Số thứ tự',
+    yourTurn: 'Sắp đến lượt bạn',
+    cancelWaiting: 'Hủy chờ',
+    visitHistory: 'Lịch sử khám',
+    prescriptionHistory: 'Đơn thuốc',
+    noHistory: 'Chưa có lịch sử khám',
+    date: 'Ngày',
+    diagnosis: 'Chẩn đoán',
+    prescription: 'Đơn thuốc',
+    doctor: 'Bác sĩ',
+    quickActions: 'Truy cập nhanh',
+    upcomingAppointments: 'Lịch hẹn sắp tới',
+    noAppointments: 'Không có lịch hẹn',
+    todayWaiting: 'Tình trạng chờ hôm nay',
+    emergency: 'Khẩn cấp',
+    myAppointments: 'Lịch hẹn của tôi',
+    profile: 'Hồ sơ',
+    language: 'Ngôn ngữ',
+    settings: 'Cài đặt',
+    logout: 'Đăng xuất',
+    viewAll: 'Xem tất cả',
+  },
+  th: {
+    appTitle: 'จองนัดหมายกระดูก',
+    selectLanguage: 'เลือกภาษา',
+    korean: 'ภาษาเกาหลี',
+    vietnamese: 'ภาษาเวียดนาม',
+    thai: 'ภาษาไทย',
+    bookAppointment: 'จองนัดหมาย',
+    selectDate: 'เลือกวันที่',
+    selectTime: 'เลือกเวลา',
+    selectDoctor: 'เลือกแพทย์',
+    patientInfo: 'ข้อมูลผู้ป่วย',
+    name: 'ชื่อ-นามสกุล',
+    phone: 'เบอร์โทรศัพท์',
+    symptoms: 'อาการ',
+    confirmBooking: 'ยืนยันการจอง',
+    back: 'ย้อนกลับ',
+    next: 'ถัดไป',
+    submit: 'ส่ง',
+    welcomeMessage: 'ยินดีต้อนรับ',
+    welcomeSubtitle: 'บริการจองนัดหมายกระดูกและข้อ',
+    selectService: 'เลือกบริการ',
+    generalOrthopedics: 'ศัลยกรรมกระดูกทั่วไป',
+    spineSpecialist: 'ผู้เชี่ยวชาญกระดูกสันหลัง',
+    jointsSpecialist: 'ผู้เชี่ยวชาญข้อ',
+    sportsInjury: 'การบาดเจ็บจากกีฬา',
+    workInjury: 'อุบัติเหตุจากการทำงาน',
+    morning: 'ช่วงเช้า',
+    afternoon: 'ช่วงบ่าย',
+    evening: 'ช่วงเย็น',
+    availableDoctors: 'แพทย์ที่สามารถนัด',
+    bookingConfirmed: 'จองสำเร็จแล้ว',
+    bookingDetails: 'รายละเอียดการจอง',
+    home: 'หน้าแรก',
+    booking: 'จองนัด',
+    waiting: 'รอคิว',
+    myInfo: 'ข้อมูลของฉัน',
+    currentWaiting: 'กำลังรอ',
+    peopleWaiting: 'คนรอ',
+    estimatedTime: 'เวลาโดยประมาณ',
+    minutes: 'นาที',
+    joinWaitlist: 'ลงทะเบียนรอคิว',
+    waitingNumber: 'หมายเลขคิว',
+    yourTurn: 'ใกล้ถึงคิวแล้ว',
+    cancelWaiting: 'ยกเลิกคิว',
+    visitHistory: 'ประวัติการรักษา',
+    prescriptionHistory: 'ใบสั่งยา',
+    noHistory: 'ไม่มีประวัติการรักษา',
+    date: 'วันที่',
+    diagnosis: 'การวินิจฉัย',
+    prescription: 'ใบสั่งยา',
+    doctor: 'แพทย์',
+    quickActions: 'เมนูด่วน',
+    upcomingAppointments: 'นัดหมายที่กำลังจะมาถึง',
+    noAppointments: 'ไม่มีนัดหมาย',
+    todayWaiting: 'สถานะรอคิววันนี้',
+    emergency: 'ฉุกเฉิน',
+    myAppointments: 'นัดหมายของฉัน',
+    profile: 'โปรไฟล์',
+    language: 'ภาษา',
+    settings: 'การตั้งค่า',
+    logout: 'ออกจากระบบ',
+    viewAll: 'ดูทั้งหมด',
+  },
+};
+
+interface LanguageContextType {
+  language: Language;
+  setLanguage: (lang: Language) => void;
+  t: (key: string) => string;
+}
+
+const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
+
+export function LanguageProvider({ children }: { children: ReactNode }) {
+  const [language, setLanguage] = useState<Language>('ko');
+
+  const t = (key: string): string => {
+    return translations[language][key] || key;
+  };
+
+  return (
+    <LanguageContext.Provider value={{ language, setLanguage, t }}>
+      {children}
+    </LanguageContext.Provider>
+  );
+}
+
+export function useLanguage() {
+  const context = useContext(LanguageContext);
+  if (!context) {
+    throw new Error('useLanguage must be used within LanguageProvider');
+  }
+  return context;
+}
