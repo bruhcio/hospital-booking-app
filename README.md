@@ -63,3 +63,63 @@ This is a frontend-centered MVP. Appointment data, queue numbers, and visit hist
 - Build an admin dashboard for schedule and queue management
 - Introduce SMS or Kakao notification flow
 - Clean multilingual resources into an i18n structure
+
+---
+
+## 한국어 버전
+
+# 병원 예약 앱
+
+예약, 현장 대기, 방문 기록, 다국어 환자 흐름을 모바일 중심으로 설계한 병원 서비스 프로토타입입니다.
+
+## 개요
+
+Hospital Booking App은 일반적인 병원 방문 과정을 `React + TypeScript`로 구현한 웹 프로토타입입니다. 사용자는 진료 예약, 현장 대기 등록, 대기 상태 확인, 방문 기록 조회 흐름을 하나의 모바일 화면 안에서 경험할 수 있습니다.
+
+목표는 반복적인 접수 과정을 줄이고, 실제 병원 backend와 연결하기 전 모바일 헬스케어 UX를 빠르게 검증하는 것입니다.
+
+## 핵심 흐름
+
+- 진료 항목 선택
+- 날짜, 시간, 의사 선택
+- 환자 정보와 증상 입력
+- 예약 확인
+- 현장 대기 등록
+- 대기 번호와 예상 대기 시간 확인
+- 방문 기록과 처방 내역 조회
+- 한국어, 베트남어, 태국어 텍스트 구조 전환
+
+## 기술 스택
+
+| 영역 | 기술 |
+| --- | --- |
+| Frontend | React, TypeScript, Vite |
+| UI | Tailwind CSS, Radix UI, MUI |
+| Interaction | motion, lucide-react |
+| App shell | PWA manifest, service worker |
+| Deploy | Vercel configuration |
+
+## 실행
+
+```bash
+npm install
+npm run dev
+```
+
+빌드:
+
+```bash
+npm run build
+```
+
+## 현재 범위
+
+이 프로젝트는 frontend 중심 MVP입니다. 예약 데이터, 대기 번호, 방문 기록은 실제 병원 기록이 아니라 프로토타입용 데이터입니다.
+
+## 개선 방향
+
+- 실제 예약 API 및 database 연결
+- 환자 인증과 개인정보 보호 flow 추가
+- 일정/대기열 관리를 위한 admin dashboard 구현
+- SMS 또는 카카오 알림 flow 도입
+- 다국어 resource를 i18n 구조로 정리
