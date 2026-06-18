@@ -10,6 +10,16 @@ A mobile-first hospital booking prototype for appointments, walk-in queues, visi
 
 </div>
 
+## Preview / 예시 화면
+
+<p align="center">
+  <img src="docs/images/hospital-booking-home.png" alt="Hospital Booking App home screen" width="360" />
+</p>
+
+The home screen brings appointment booking, walk-in waiting, today's queue status, upcoming appointments, and visit history into one mobile-first dashboard.
+
+홈 화면은 `진료 예약`, `현재 대기`, `오늘 대기 현황`, `예정된 예약`, `방문 기록`을 한 화면에서 확인할 수 있도록 구성했습니다.
+
 ---
 
 ## Overview
@@ -123,3 +133,10 @@ npm run build
 - 일정/대기열 관리를 위한 admin dashboard 구현
 - SMS 또는 카카오 알림 flow 도입
 - 다국어 resource를 i18n 구조로 정리
+
+## 디자인 방향
+
+- 모바일 우선 레이아웃
+- 빠른 예약과 대기 등록을 분리한 하단 탭 구조
+- 의료 서비스에 맞는 차분한 녹색/피치 계열 상태 색상
+- 환자가 다음 행동을 쉽게 판단할 수 있는 큰 카드형 액션
